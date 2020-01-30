@@ -1,39 +1,28 @@
 import React from 'react';
-import {Home} from "./views/Home";
-import {Header} from "./components/Header";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import {makeStyles} from "@material-ui/core/styles";
 import './style.css';
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    }
-}));
+import {Header} from "./components/Header";
+import {Home} from "./views/Home";
+import {Login} from "./views/Login";
+import {NotFound} from "./views/NotFound";
 
 const App: React.FC = () => {
-
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-
-            <Header/>
-
-            <main>
-                <div className={classes.drawerHeader} />
-
-                <Home/>
-
-            </main>
+        <div>
+            <Router>
+                <CssBaseline />
+                <Header/>
+                <main>
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/auth/login" component={Login}/>
+                        <Route component={NotFound} />
+                    </Switch>
+                </main>
+            </Router>
         </div>
     )
 }

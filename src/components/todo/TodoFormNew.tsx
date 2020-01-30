@@ -20,6 +20,6 @@ export const TodoFormNew: React.FC<IAddNewTodo> = (props) => {
             onChange={changeHendleTask}
             value={task}
             onKeyPress={onPressEnter}
-            id="standard-required" label="New task" defaultValue="New task" />
+            id="standard-required" label="New task" />
     )
 }
